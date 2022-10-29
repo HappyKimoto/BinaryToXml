@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Patterns>
+    <!-- start_offset is missing -->
+    <Pattern>TypeError: start_offset</Pattern>
+    <!-- start_offset is not a number-->
+    <Pattern start_offset="hello world">ValueError: start_offset</Pattern>
+    <!-- start_offset can be expresse unpack_format="&lt;i"d in either decimal or hex with 0x prefix -->
+    <Pattern start_offset="16" unpack_format="&lt;i">(0,)</Pattern>
+    <Pattern start_offset="0x10">Not Set Error</Pattern>
+    <!-- use unpack_index to specify the index -->
+    <Pattern start_offset="0x00000000" unpack_format="&lt;4I">(50462976, 117835012, 185207048, 252579084)</Pattern>
+    <Pattern start_offset="0x00000000" unpack_format="&lt;4I" unpack_index="0">50462976</Pattern>
+    <Pattern start_offset="0x00000000" unpack_format="&lt;4I" unpack_index="1">117835012</Pattern>
+    <Pattern start_offset="0x00000000" unpack_format="&lt;4I" unpack_index="2">185207048</Pattern>
+    <Pattern start_offset="0x00000000" unpack_format="&lt;4I" unpack_index="3">252579084</Pattern>
+    <Pattern start_offset="0x00000000" unpack_format="&lt;4I" unpack_index="4">IndexError: unpack_index</Pattern>
+    <Pattern start_offset="0x00000000" unpack_format="&lt;4I" unpack_index="NaN">ValueError: unpack_index</Pattern>
+    <!-- try different formats -->
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;c" unpack_index="0">b'\n'</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="Hello" unpack_index="0">error: data_length</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;b" unpack_index="0">10</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;?" unpack_index="0">True</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;h" unpack_index="0">2571</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;H" unpack_index="0">2571</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;i" unpack_index="0">168496141</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;I" unpack_index="0">168496141</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;l" unpack_index="0">168496141</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;L" unpack_index="0">168496141</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;q" unpack_index="0">723685415333068800</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;Q" unpack_index="0">723685415333068800</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;n" unpack_index="0">error: data_length</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;N" unpack_index="0">error: data_length</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;e" unpack_index="0">0.0001844167709350586</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;f" unpack_index="0">6.694873056790824e-33</Pattern>
+    <Pattern start_offset="0x0000000A" unpack_format="&gt;d" unpack_index="0">2.748615883389882e-260</Pattern>
+    <!-- test code page 932 -->
+    <Pattern start_offset="0x40" code_page="cp932" length="16">あいうえおかきく</Pattern>
+    <Pattern start_offset="0x40" code_page="shift-jis" length="16">あいうえおかきく</Pattern>
+    <Pattern start_offset="0x40" code_page="utf-8" length="16">����������������</Pattern>
+    <Pattern start_offset="0x60" code_page="utf-8" length="16">あいうえお</Pattern>
+    <!-- system time -->
+    <Pattern start_offset="0x90" function="systemtime_16_le" length="16">2012-07-03T16:42:17.713000</Pattern>
+    <Pattern start_offset="0x90" function="hex_str" length="16">dc0707000200030010002a001100c902</Pattern>
+</Patterns>

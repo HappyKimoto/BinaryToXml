@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Data>
+    <Datum PositionHex="10C" Size="4" Type="Integer" Endian="Big" Description="param1"></Datum>
+    <Datum PositionHex="110" Size="4" Type="Integer" Endian="Big" Description="param2"></Datum>
+    <Datum PositionHex="50C" Size="2" Type="Integer" Endian="Big" Description="param3"></Datum>
+    <Datum PositionHex="50C" Size="2" Type="Integer" Endian="Little" Description="param4"></Datum>
+</Data>
